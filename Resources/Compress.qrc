@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/">
+        <file>sample.xml</file>
+        <file>Source.cpp</file>
+    </qresource>
+</RCC>
