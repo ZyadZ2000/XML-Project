@@ -1,0 +1,10 @@
+release/XML_JSON.o
+release/XML_compress.o
+release/XML_cons.o
+release/XML_Format.o
+release/graphwindow.o
+release/main.o
+release/users_on_social_network.o
+release/qrc_Resources.o
+release/moc_graphwindow.o
+release/moc_users_on_social_network.o

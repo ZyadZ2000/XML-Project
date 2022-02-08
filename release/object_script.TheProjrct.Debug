@@ -1,0 +1,10 @@
+debug/XML_JSON.o
+debug/XML_compress.o
+debug/XML_cons.o
+debug/XML_Format.o
+debug/graphwindow.o
+debug/main.o
+debug/users_on_social_network.o
+debug/qrc_Resources.o
+debug/moc_graphwindow.o
+debug/moc_users_on_social_network.o
