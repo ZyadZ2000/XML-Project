@@ -36,3 +36,6 @@ public:
 };
 Tree Parsing(string g);
 string read(string path);
+Tree network(string g);
+string visual(string r);
+Tree parse(string g);

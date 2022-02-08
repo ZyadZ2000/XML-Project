@@ -13,14 +13,17 @@ SOURCES += \
     XML_compress.cpp \
     XML_cons.cpp\
     XML_Format.cpp\
+    graphwindow.cpp \
     main.cpp \
     users_on_social_network.cpp
 
 HEADERS += \
     XML.h\
+    graphwindow.h \
     users_on_social_network.h
 
 FORMS += \
+    graphwindow.ui \
     users_on_social_network.ui
 
 # Default rules for deployment.

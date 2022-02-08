@@ -8,6 +8,10 @@
 #include"XML.h"
 #include <iostream>
 #include <sstream>
+#include <QPixmap>
+#include <QDir>
+
+
 bool f=false;
 QString path;
 bool Saved=false;
@@ -16,11 +20,13 @@ Users_On_Social_Network::Users_On_Social_Network(QWidget *parent)
     , ui(new Ui::Users_On_Social_Network)
 {
     ui->setupUi(this);
+
     //this->setCentralWidget(ui->plainTextEdit);
     ui->comboBox->addItem("Check Consistency!");
     ui->comboBox->addItem("Formatting XML!");
     ui->comboBox->addItem("Convert to JSON!");
     ui->comboBox->addItem("Compressing the file!");
+    ui->comboBox->addItem("VISUALIZE!");
 }
 
 Users_On_Social_Network::~Users_On_Social_Network()
@@ -37,6 +43,36 @@ Users_On_Social_Network::~Users_On_Social_Network()
 void Users_On_Social_Network::on_pushButton_clicked()
 {
     QString chosen = ui->comboBox->currentText();
+    if(chosen == "VISUALIZE!"){
+        //Check Consistency first
+        //We Must call the parsing function
+        //Save the return string as .dot file and tell user to name it as "test.dot"
+          QString r = ui->plainTextEdit->toPlainText();
+          string r_s =r.toStdString();
+          r_s=XML_Consistency(r_s);
+          string vis=visual(r_s);
+
+
+
+
+
+
+
+        dot_path = QFileDialog::getSaveFileName(this,"Please save your file and name it (test.dot)");
+        QFile file(dot_path);
+        if(!file.open(QFile::WriteOnly|QFile::Text)){
+            QMessageBox::warning(this,"Not Found","Your File is not find");
+        }
+        QTextStream out(&file);
+        QString text =QString::fromStdString(vis) ;
+         //QString text = ui->plainTextEdit->toPlainText();
+        out<<text;
+        file.flush();
+        file.close();
+
+        G = new GraphWindow(dot_path,this);
+        G->show();
+    }
     if(chosen == "Check Consistency!"){
         QString current;
         QMessageBox::StandardButton reply = QMessageBox::question(this,"Choose File","If you want to operate on the current text press YES, press NO for operating on the original file",QMessageBox::Yes|QMessageBox::No);
